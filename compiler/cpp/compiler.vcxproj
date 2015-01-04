@@ -135,6 +135,7 @@
     <IncludePath>$(ProjectDir)\src\;$(ProjectDir)\src\windows\;$(IncludePath)</IncludePath>
     <TargetName>thrift</TargetName>
     <ExecutablePath>$(ExecutablePath);C:\Program Files (x86)\Git\bin</ExecutablePath>
+    <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -163,13 +164,14 @@
       <PreprocessorDefinitions>WIN32;MINGW;YY_NO_UNISTD_H;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ForcedIncludeFiles>config.h</ForcedIncludeFiles>
       <CompileAs>CompileAsCpp</CompileAs>
+      <AdditionalIncludeDirectories>.</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PreBuildEvent>
-      <Command>flex -o "src\\thriftl.cc" src/thriftl.ll
+      <Command>flex -o"src\\thriftl.cc" src/thriftl.ll
 bison -y -o "src\thrifty.cc" --defines="src/thrifty.hh" src/thrifty.yy</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
